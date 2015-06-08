@@ -1,3 +1,13 @@
-  canvans本身是一个对象，定义一个对象var ctx=vanvasgetCintext('2d').然后调用接口即可，比如：
+  canvans本身是一个对象，定义一个对象var ctx=canvasgetContext('2d').然后调用接口即可，比如：
 ctx.fillTest('hello world',0,0).
   canvas大致有几个功能：1.绘图 2.图形特效处理 3.控制叠加风格 4.控制填充风格 5.位图处理。
+  绘图提供了：
+  1）绘制几何图形；
+     CanvasRenderingContext2D只提供了两种方法绘制几何图形；
+     ~fillRect(float x,float y,float width,float height):填充一个矩形区域；
+     ~strokeRect(float x,float y,float width,float height):绘制一个矩形边框；
+  2）绘制字符串；
+     ~fillText('content',float x,float y)：填充一个字符串；
+     ~strokeText('content',float x,float y)：绘制字符串边框；
+     属性： textAlign:设置字符串水平对齐方式；
+            textBaseAlign:设置字符串垂直对齐方式；
