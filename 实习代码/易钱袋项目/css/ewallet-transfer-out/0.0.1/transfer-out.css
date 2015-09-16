@@ -1,0 +1,299 @@
+ .trasfer-out-content {
+	padding: 55px 0 55px 275px;
+	width: 715px;
+    margin: 0 auto;
+}
+ .trasfer-out-content dt{
+	width: 105px;
+	text-align: right;
+	font-size: 14px;
+}
+ .trasfer-out-content dd{
+	margin-left: 10px;
+}
+
+/*第一部分，易钱包余额*/
+.trasfer-out-content .wallet-balance{
+    float: left;
+    text-align: right;
+}
+.trasfer-out-content .balance-count{
+	font-size: 18px;
+	margin-right: 8px;
+}
+.trasfer-out-content .wallet-remain{
+    display: inline-block;
+    margin-top: -4px;
+    font-size: 14px;
+}
+
+/*第二部分，转出安全卡信息*/
+ .trasfer-out-content .bank-card{
+	margin-top: 17px;
+}
+ .trasfer-out-content .card-type{
+	display: inline-block;
+	border: 1px solid #c8c8c8;
+	height: 46px;
+	width: 300px;
+	line-height: 45px;
+	font-size: 14px;
+}
+ .out-safe-card{
+	display: inline-block;
+	height: 47px;
+	line-height: 47px;
+	float: left;
+}
+ .trasfer-out-content .card-number{
+	margin-left: 86px;
+	display: inline-block;
+	font-size: 12px;
+}
+ .trasfer-out-content .state-bind{
+	margin: 6px 0 0 114px;
+	font-size: 12px;
+}
+.bank-card .icon-bank {
+    float: left;
+    width: 32px;
+    line-height: 50px;
+    font-size: 24px;
+    margin: -2px 2px 0 28px;
+}
+
+/*第三部分，赎回模式选择*/
+ .trasfer-out-content .redeem-pattern{
+	margin-top: 17px;
+	height: 80px;
+}
+ .trasfer-out-content .redeem-model{
+	height: 46px;
+	line-height: 46px;
+}
+.redeem-model,.ordinary,.redeem{
+	float: left;
+}
+.trasfer-out-content .check{
+	margin: 0px auto;
+	width: 79px;
+	font-size: 14px;
+}
+.trasfer-out-content .model-selected{
+	background: url(//i.epay.126.net/a/f/modern/images/business/ewallet/transfer-out/select.png) no-repeat 127px 15px;
+	background-color: #fff7e9;
+	height: 35px;
+	line-height: 35px;
+	border: 2px solid #ff6400;
+	cursor: pointer;
+	margin-top: 5px;
+}
+.trasfer-out-content .check-select{
+	height: 37px;
+	background: none;
+	background-color: #f5f5f5;
+	line-height: 37px;
+	border: 1px solid #bebebe;
+	cursor: pointer;
+    margin-top: 5px;
+}
+.trasfer-out-content .ordinary{
+	width: 149px;
+}
+.trasfer-out-content .fast{
+	width: 149px;
+	margin-left: 7px;
+}
+  .trasfer-out-content .g-container:after {
+    display: block;
+    clear: both;
+    height: 0;
+    all-container: "\0020";
+}
+.fast-arrival,.ordinary-arrival{
+	margin-top: 4px;
+	display: none;
+	width: 210px;
+}
+.fast .fast-arrival{
+	width: 344px;
+}
+.trasfer-out-content .redeem-pattern label{
+	margin-left: 10px;
+}
+
+/*第四部分，预计到账时间*/
+ .trasfer-out-content .estimate-arrival{
+	height: 37px;
+}
+.estimate-arrival .arrival-title{
+	float: left;
+}
+.estimate-arrival .arrival-time{
+	font-size: 14px;
+	margin-left: 9px;
+	display: inline-block;
+}
+
+/*第五部分，转出金额以及输入框*/
+.error-border{
+	border:1px solid #f13837;
+}
+.normal-border{
+	border: 1px solid #c8c8c8;
+}
+.trasfer-out-content .transfer-out-count .value{
+	color: #dd122f;
+	font-size: 14px;
+}
+.trasfer-out-content .transfer-out-count .out-amount{
+	height: 35px;
+	width: 106px;
+	margin:5px 0 0  -4px;
+	font-size: 14px;
+	padding-left: 9px;
+}
+.transfer-out-count .out-input,.out-count{
+	display: inline-block;
+}
+.transfer-out-count .company{
+	display: inline-block;
+	margin-left: 9px;
+	font-size: 14px;
+}
+.hide-format .format-check{
+    text-align: right;
+   	color: #FF0033;
+	font-size: 13px;
+	line-height: 22px;
+}
+.transfer-out-count .hide-format{
+	height: 22px;
+	display: inline-block;
+	margin-left: 28px;
+}
+.transfer-out-count .allow-count{
+	margin:0 0 0 113px;
+	height: 21px;
+}
+
+
+/*第六部分，获取短信验证码*/
+.trasfer-out-content .message-code {
+	margin-top: 17px;
+	height: 72px;
+}
+.message-code .get-message{
+	float: left;
+}
+.message-code .code-get{
+	height: 33px;
+	width: 100px;
+	background-color: #f8f8f8;
+	float: left;
+	text-align: center;
+	line-height: 35px;
+	color: #08c;
+	border: 1px solid #c8c8c8;
+	margin-top: 5px;
+}
+.message-code .message-state{
+	float: left;
+	line-height: 46px;
+}
+.trasfer-out-content .message-place{
+	height: 33px;
+	width: 146px;
+	margin: 5px 24px 0 10px;
+	font-size: 14px;
+	padding-left: 9px;
+	border: 1px solid #c8c8c8;
+}s
+.loading {
+    cursor:not-allowed;
+    color: #999;
+}
+.message-code .j-sms-err{
+	color: #e2324b;
+	height: 45px;
+	line-height: 45px;
+}
+.message-code .phone-number{
+	display: none;
+}
+.message-code .err-construct{
+	width: 760px;
+	height: 45px;
+}
+.message-code .number-place{
+	width: 223px;
+	height: 18px;
+	float: left;
+}
+.message-code .non-message{
+	display: none;
+}
+/*清除浮动的伪类实现*/
+.message-code .j-sms-err:after{
+	content:".";  
+    height:0;  
+    visibility:hidden;  
+    display:block;  
+    clear:both;  
+}
+.message-sended{
+	cursor: not-allowed;
+}
+.message-get{
+	cursor: pointer;
+}
+
+
+/*第七部分，提交部分*/
+.trasfer-out-content .submit-area{
+	width: 160px;
+	height: 35px;
+	font-size: 16px;
+	text-align: center;
+	float: left;
+}
+.trasfer-out-content .submit-area:hover{
+	color: #fff;
+}
+.trasfer-out-content .submit{
+	background-color: #f13837;
+	width: 160px;
+	height: 35px;
+	margin: 18px 0 0 115px;
+	cursor: pointer;
+	text-align: center;
+	line-height: 35px;
+	color: #fff;
+	font-size: 17px;
+}
+ .trasfer-out-content .submit:hover{
+	background-color: #e1271a;
+}
+ .trasfer-out-content .disabled{
+	background-color: #cccccc;
+	cursor: not-allowed;
+	color: #fff;
+}
+ .trasfer-out-content .disabled:hover{
+	background-color: #cccccc;
+}
+ .trasfer-out-content .submit-count{
+	color: #fff;
+	font-size: 13px;
+}
+ .trasfer-out-content .error-msg{
+	font-size: 13px;
+	color: #FF0033;
+	margin-top: -10px;
+	height: 18px;
+	width: 362px;
+	cursor: text;
+}
+.trasfer-out-content .submit dd{
+	margin-left: 0px;
+}

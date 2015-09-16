@@ -1,0 +1,328 @@
+/**
+ * transferIn.css
+ * @author aoyou <hzaoyou@corp.netease.com>
+ * @date 20150808
+ * @description P2P定期理财频道样式
+ **/
+
+.m-ewallet-order {
+    width: 988px;
+    height: 316px;
+    margin: 40px auto 0px;
+    border: 1px solid #eee;
+    zoom: 1;
+}
+.m-ewallet-order:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\0020";
+}
+
+/*obj-profit*/
+.m-ewallet-order .obj-profit {
+    float: left;
+    width: 604px;
+    height: 316px;
+    border-right: 1px solid #eee;
+}
+.m-ewallet-order .profit-sign {
+    height: 180px;
+    padding-top: 42px;
+    padding-left: 58px;
+    border-bottom: 1px solid #eee;
+}
+.m-ewallet-order .profit-sign .qblogo {
+    display: inline-block;
+    width: 111px;
+    height: 30px;
+    margin-right: 20px;
+    background: url(//i.epay.126.net/a/f/modern/images/business/ewallet/transfer-in/qb-logo.png?v=2015091502) no-repeat;
+}
+.m-ewallet-order .sign-list {
+    display: inline-block;
+}
+.m-ewallet-order .sign-list li {
+    float: left;
+    height: 24px;
+    margin-right: 10px;
+    border: 1px solid #eee;
+    border-radius:4px;
+    background-color: #fafafa;
+    line-height: 24px;
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+}
+.m-ewallet-order .profit-seven-day {
+    float: left;
+    width: 214px;
+    margin-top: 26px;
+}
+.m-ewallet-order .profit-sign .value-seven {
+    font-size: 48px;
+    color: #f33e2f;
+}
+.m-ewallet-order .profit-sign .profit-much {
+    float: left;
+    margin-top: 26px;
+}
+.m-ewallet-order .profit-sign .unit-seven {
+    font-size: 25px;
+    color: #f33e2f;
+}
+.m-ewallet-order .profit-much .value-much {
+    font-size: 48px;
+    color: #333;
+}
+.m-ewallet-order .profit-much .profit-amount {
+    margin-left: -4px;
+}
+.m-ewallet-order .profit-much .proco {
+    color: #999;
+}
+.m-ewallet-order .profit-sign .unit-much {
+    font-size: 25px;
+    color: #333;
+    margin-left: 3px;
+}
+.m-ewallet-order .profit-sign .list-product {
+    width: 115px;
+}
+.m-ewallet-order .profit-sign .list-use {
+    width: 75px;
+}
+.m-ewallet-order .profit-statement {
+    padding-left: 57px;
+    padding-top: 27px;
+}
+.m-ewallet-order .profit-statement p {
+    color: #999;
+    font-size: 12px;
+}
+
+/*obj-order*/
+.m-ewallet-order .obj-order {
+    height: 269px;
+    width: 323px;
+    float: left;
+    padding: 47px 30px 0px 30px;
+}
+.m-ewallet-order .obj-order .balance {
+    padding-right: 2px;
+    font-size: 18px;
+    color: #f33d2e;
+}
+.m-ewallet-order .obj-order .titleword .blackword {
+    color: #333;
+}
+.m-ewallet-order .obj-area {
+    width: 323px;
+    margin-top: 17px;
+    zoom: 1;
+}
+.m-ewallet-order .obj-area:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\0020";
+}
+.m-ewallet-order .u-input {
+    float: left;
+    width: 321px;
+    height: 60px;
+    margin-bottom: 7px;
+    line-height: 60px;
+    border: 1px solid #cbcbcb;
+}
+.m-ewallet-order .u-input .in-amount {
+    float: left;
+    width: 280px;
+    height: 60px;
+    font-size: 14px;
+    padding-left: 12px;
+    border: 0 none;
+}
+.m-ewallet-order .u-input .price-unit {
+    float: left;
+    font-size: 14px;
+}
+.m-ewallet-order .input-error .u-input {
+    border-color: #f44336;
+}
+.m-ewallet-order .obj-area .u-tip-header {
+    width: 63px;
+    text-align: right;
+}
+.m-ewallet-order .obj-order .issuedate {
+    float: left;
+    width: 260px;
+    color: #999;
+}
+.m-ewallet-order .obj-order .issuedate a {
+    margin-left: 92px;
+    color: #666;
+}
+.m-ewallet-order .input-error .issuedate,
+.m-ewallet-order .issuedate .in-error {
+    color: #f44336;
+}
+.m-ewallet-order .obj-order .u-tip {
+    float: left;
+}
+.m-ewallet-order .u-tip .link-banks:link,
+.m-ewallet-order .u-tip .link-banks:visited {
+    color: #999;
+}
+.m-ewallet-order .u-tip .link-banks:hover,
+.m-ewallet-order .u-tip .link-banks:active {
+    color: #f44336;
+}
+.m-ewallet-order .obj-order .u-tip-content {
+    display: none;
+    right: -31px;
+    top: 18px;
+    width: 280px;
+    padding-top: 5px;
+    background-color: #fff;
+    /*box-shadow: 1px 1px 1px #ccc;*/
+}
+.m-ewallet-order .obj-order table {
+    width: 280px;
+}
+.m-ewallet-order .u-tip-container {
+    height: 241px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.m-ewallet-order .u-tip-content th {
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+    margin-left: 4px;
+}
+.m-ewallet-order .u-tip-content td {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.m-ewallet-order .u-tip-content tr {
+    height: 35px;
+}
+.m-ewallet-order .u-tip-content .bank-name {
+    width: 120px;
+}
+.m-ewallet-order .u-tip-content .value {
+    color: #f72f2f;
+}
+.m-ewallet-order .u-tip-content .per-day {
+    width: 78px;
+}
+.m-ewallet-order .u-tip-content .bank-name p {
+    zoom: 1;
+}
+.m-ewallet-order .u-tip-content .bank-name p:after {
+    display: block;
+    clear: both;
+    height: 0;
+    content: "\0020";
+}
+.m-ewallet-order .u-tip-content .bank-name .icon-bank {
+    float: left;
+    width: 32px;
+    line-height: 40px;
+    font-size: 24px;
+    margin-left: 8px;
+}
+.m-ewallet-order .u-tip-content .bank-name span {
+    float: left;
+    line-height: 40px;
+}
+.m-ewallet-order .u-tip-content .icon-arrow {
+    position: absolute;
+    top: 1px;
+    right: 48px;
+    overflow: hidden;
+    width: 10px;
+    height: 5px;
+}
+.m-ewallet-order .u-tip-content .icon-arrow em,
+.m-ewallet-order .u-tip-content .icon-arrow span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    line-height: 0;
+}
+.m-ewallet-order .u-tip-content .icon-arrow em {
+    top: 0;
+    left: 0;
+    border-width: 0 5px 5px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #ddd;
+}
+.m-ewallet-order .u-tip-content .icon-arrow span {
+    top: 1px;
+    left: 0;
+    border-width: 0 5px 5px;
+    border-style: dashed dashed solid;
+    border-color: transparent transparent #f7f7f7;
+}
+
+/* obj-operator */
+.m-ewallet-order .obj-operator {
+    margin-top: 37px;
+}
+.m-ewallet-order .obj-operator .trin-count {
+    display: block;
+    width: 323px;
+    height: 50px;
+    background-color: #f44336;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+.m-ewallet-order .obj-operator .trin-count:hover,
+.m-ewallet-order .obj-operator .trin-count:active {
+    background-color: #e1271a;
+}
+.m-ewallet-order .obj-operator .error-msg {
+    width: 286px;
+    font-size: 12px;
+    color: #ff0033;
+}
+.m-ewallet-order .obj-operator .readagree {
+    width: 305px;
+    margin-top: 7px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* m-ewallet-qa */
+.m-ewallet-qa {
+    /*height: 381px;*/
+    background-color: #f6f6f6;
+    margin-top: 60px;
+    padding: 47px 0;
+}
+.m-ewallet-qa .qa-container {
+    width: 990px;
+    margin: 0px auto;
+}
+.m-ewallet-qa p,
+.m-ewallet-qa h3 {
+    margin-top: 9px;
+    line-height: 19px;
+    color: #666;
+}
+.m-ewallet-qa h3 {
+    font-size: 12px;
+    font-weight: 700;
+}
+.m-ewallet-qa h2 {
+    font-size: 14px;
+    color: #333;
+    font-weight: 700;
+}
+.m-ewallet-qa .qut {
+    margin-top: 44px;
+}

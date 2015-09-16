@@ -1,0 +1,44 @@
+/**
+ * transferIn.css
+ * @author aoyou <hzaoyou@corp.netease.com>
+ * @date 20150808
+ * @description P2P定期理财频道样式
+ **/
+
+.ewallet-transfer-outsucc .content-area{
+	height: 290px;
+	background-color: #ffffff;
+	width: 328px;
+	margin: 0 auto;
+}
+.ewallet-transfer-outsucc .content-area .statement{
+	margin-top: 80px;
+	height: 70px;
+}
+.ewallet-transfer-outsucc .statement .success-logo{
+    background:url(//i.epay.126.net/a/f/modern/images/business/ewallet/transfer-insucc/succ.png) no-repeat;
+    height: 102px;
+    width: 63px;
+    float: left;
+}
+.ewallet-transfer-outsucc .statement .success-state{
+	height: 56px;
+	line-height: 56px;
+	font-weight: bolder;
+}
+.ewallet-transfer-outsucc .success-state .remind{
+	font-size: 23px;
+}
+.ewallet-transfer-outsucc .help-link{
+	margin-top: 30px;
+}
+.ewallet-transfer-outsucc .help-link p{
+	font-size: 15px;
+}
+.ewallet-transfer-outsucc .help-link .qut-separate{
+	color: #08c;
+	margin:0 9px 0;
+}
+.ewallet-transfer-outsucc .profit-state{
+	font-size: 13px;
+}
