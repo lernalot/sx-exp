@@ -60,7 +60,7 @@
                 
 
                 //快速赎回的时候，赎回次数为0，在获取验证码后点击普通赎回样式变为可点
-                if(that.isSmsGetting || that.config.flag === 'Y'){
+                if(that.isSmsGetting || that.config.flag === 'N'){
                     $('dl.submit',this.$node).removeClass('disabled');
                 }
                 var redeemMode = $('input[name=odinary]:checked',this.$node).val();
@@ -89,7 +89,7 @@
                     $('dd.allow-count').html('快速赎回下您最多可以转出<em class="value">10000</em>元');
                     that.amountJudge = false;
                 }
-                else if(redeemMode === '0' && that.config.flag === 'Y'){
+                else if(redeemMode === '0' && that.config.flag === 'N'){
                     $('p.fast-arrival').text('今日快速赎回额度已用完，请选择普通赎回');
                      $('dd.allow-count').html('<em class="value">请选择普通赎回</em>');
                     that.amountJudge= false;
@@ -106,7 +106,7 @@
                 if(redeemMode === '0' && that.config.redeemTimes === '0'){
                     $('#js-submit',this.$node).addClass('disabled');
                 }
-                if (redeemMode === '0' && that.config.flag === 'Y') {
+                if (redeemMode === '0' && that.config.flag === 'N') {
                     $('#js-submit',this.$node).addClass('disabled');
                 }
             });
@@ -148,37 +148,38 @@
             $('input.out-amount').on('keyup',function(e){
                 e.preventDefault();
                 var amount = $('input.out-amount').val();
-                var redeemMode = $('input[name=odinary]:checked').val();
-               
+                var redeemMode = $('input[name=odinary]:checked').val();              
+
                 //用户首先输入的数字限额大于余额，拦截，快速赎回模式下如果输入大于10000，提示最多能提取10000并拦截
                 if(amount*1 > that.config.redeemAmount){
-                    $('dd.allow-count',this.$node).html('<em class="value">超出金额限额</em>');
-                    $('input.out-amount',this.$node).addClass("error-border");
-                    $('input.out-amount',this.$node).removeClass("normal-border");
-                    that.amountJudge = false;
+                    that._validateChange('<em class="value">超出金额限额</em>',false);
                 } else if(redeemMode === '0' && (amount * 1 > 10000)){
-                    $('dd.allow-count',this.$node).html('快速赎回下您最多可以转出<em class="value">10000</em>元');
-                    $('input.out-amount',this.$node).addClass("error-border");
-                    $('input.out-amount',this.$node).removeClass("normal-border");
-                    that.amountJudge = false;
+                    that._validateChange('快速赎回下您最多可以转出<em class="value">10000</em>元',false);
                 } else if(redeemMode === '0' && that.config.redeemTimes === '0'){
-                    $('dd.allow-count',this.$node).html('快速赎回下您当日的提取次数已<em class="value">用尽</em>');
-                    $('input.out-amount',this.$node).addClass("error-border");
-                    $('input.out-amount',this.$node).removeClass("normal-border");
-                    that.amountJudge = false;
+                    that._validateChange('快速赎回下您当日的提取次数已<em class="value">用尽</em>',false);
                 } else if(redeemMode === '0'){
-                    $('dd.allow-count',this.$node).html('快速赎回下您最多还可以提取<em class="value">' + that.config.redeemTimes +'</em>次');
-                    $('input.out-amount',this.$node).removeClass("error-border");
-                    $('input.out-amount',this.$node).addClass("normal-border");
-                    that.amountJudge = true;
+                    that._validateChange('快速赎回下您最多还可以提取<em class="value">' + that.config.redeemTimes +'</em>次',true);
                 } else{
-                    $('dd.allow-count',this.$node).html('本次可提取金额：<em class="value">' + that.config.redeemAmount +'</em>元');
-                    $('input.out-amount',this.$node).removeClass("error-border");
-                    $('input.out-amount',this.$node).addClass("normal-border");
-                    that.amountJudge = true;
+                    that._validateChange('本次可提取金额：<em class="value">' + that.config.redeemAmount +'</em>元',true);
                 }
-                    
             });
+        },
+
+        _validateChange:function(content,judge){
+            var $outAmount = $('input.out-amount',this.$node),
+                $allowCount = $('dd.allow-count',this.$node),
+                that = this;
+            if(!judge){
+                $allowCount.html(content);
+                $outAmount.addClass("error-border");
+                $outAmount.removeClass("normal-border");
+                that.amountJudge = false;
+            } else{
+                $allowCount.html(content);
+                $outAmount.removeClass("error-border");
+                $outAmount.addClass("normal-border");
+                that.amountJudge = true;
+            }
         },
 
         //短信输入框获得焦点之后提示隐藏，边框变为灰色
@@ -205,7 +206,7 @@
                 if(!that.zeroRedeem && that.config.redeemTimes === '0'){
                     return;
                 }
-                if(!that.zeroRedeem && that.config.flag === 'Y'){
+                if(!that.zeroRedeem && that.config.flag === 'N'){
                     return;
                 }
 
@@ -295,7 +296,7 @@
                   that.formatJudge = false;
                }           
                else {
-                    $('input.out-amount',this.$node).val((amount * 1).toFixed(2));
+                    // $('input.out-amount',this.$node).val((amount * 1).toFixed(2));
                     that.formatJudge = true;
                }
             })
