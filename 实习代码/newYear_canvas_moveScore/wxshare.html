@@ -1,0 +1,70 @@
+<div id="rewardcontent2" onclick="closeReward(2)" style="display:none;">
+	<div class="divmask"></div>
+	<div class="divmaskcontent">
+		<img src="/images/activity/share4.png" style="width:100%;"/>
+	</div>
+</div>
+<#assign jsmap = getWxJsSignature()>
+<#if jsmap.appId ??>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+	wx.config({
+	    debug: false,
+	    appId: '${jsmap.appId}',
+	    timestamp: ${jsmap.timestamp},
+	    nonceStr: '${jsmap.nonceStr}',
+	    signature: '${jsmap.signature}',
+	    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ']
+	});
+	var title = '中奖了！我在参加华赢宝新年活动！快来助我一臂之力吧！';
+	var desc = '我在参加华赢宝新年活动，100%中奖哟~快来帮我增加玩游戏机会吧！';
+	var link = '${serverDomain!''}/game/playGame/2?wxId=${(gamePlayTimes.openid)!''}';
+	var imgUrl = '${serverDomain!''}/images/activity/wxshare2.png';
+	wx.ready(function(){
+		wx.onMenuShareAppMessage({
+	      title: title,
+	      desc: desc,
+	      link: link,
+	      imgUrl: imgUrl
+	    });
+	    wx.onMenuShareTimeline({
+	      title: title,
+	      link: link,
+	      imgUrl: imgUrl
+	    });
+		wx.onMenuShareQQ({
+	      title: title,
+	      desc: desc,
+	      link: link,
+	      imgUrl: imgUrl
+	    });
+	});
+	wx.error(function(res){
+		//alert(JSON.stringify(res));
+	});
+</script>
+</#if>
+<script>
+	function showReward(){
+		$("#rewardbtn").hide();
+		$("#rewardcontent").show();
+		$("#rewardcontent2").hide();
+		$(".divmask").css("height", document.body.scrollHeight);
+	}
+	function closeReward(step,needCheck){
+		if(step == 1){
+			$("#rewardcontent2").show();
+			$("#rewardbtn").hide();
+			$("#rewardcontent").hide();
+			$("#btnmask").hide();
+			$("#admask1").hide();
+			$(".divmask").css("height", document.body.scrollHeight);
+		}else if(step == 2){
+			$("#rewardbtn").show();
+			$("#rewardcontent").hide();
+			$("#rewardcontent2").hide();
+			$("#btnmask").show();
+			$("#admask1").hide();
+		}
+	}
+</script>

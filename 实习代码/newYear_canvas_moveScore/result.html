@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+	<meta name="screen-orientation" content="portrait">
+    <title>猴年乐淘淘 大奖到碗里来</title>
+    <link rel="stylesheet" type="text/css" href="/templates/game/newYear/css/index.css?v=20160127">
+    <link rel="stylesheet" type="text/css" href="/templates/game/newYear/css/base.css?v=20160127">
+    
+    <script src="/js/base.js"></script>    
+    <script src="/js/jquery-1.7.1.min.js"></script>
+    <script src="/templates/game/newYear/js/interactive.js?v=20160127"></script>  
+    <script type="text/javascript">
+    $(function(){
+        $('.myscroll').myScroll({
+            speed: 40, //数值越大，速度越慢
+            rowHeight: 26 //li的高度
+        });
+    });
+    </script>
+
+</head>
+
+<body style="background-color: #233356;">
+    <div id="resultPanel">   
+        <div class="end-container">
+            <header class="title-area">
+                <div class="tilpic"></div>
+                <p class="getted-award">您本次游戏获得了<span class="emphis">${score!'0'}分</span>！</p>
+                <#if !rewardName?? || rewardName == "" || rewardName == "InvalidSession" || rewardName == "游戏次数不够" || rewardName == "未中奖">
+                	<#assign rewardName = "未中奖">
+                </#if>
+                <#if rewardName == "未中奖">
+                <p class="getted-award">很遗憾！您未中奖！</p>
+                <#else>
+                <p class="getted-award">恭喜您！获得了<span class="emphis">${rewardName}</span></p>
+                </#if>
+            </header>
+            <div class="select-area">
+                <ul class="selclist">
+                <#if rewardName == "未中奖">
+                <#else>
+                    <li><a class="cliget" href="/verified/index"></a></li>
+                </#if>
+                    <li><a class="play-again replay" href="/game/playGame/2"></a></li>
+                </ul>
+            </div>
+            <div class="gift-list">
+                <p class="player-num">${playerCount+109}个人玩过这个游戏</p>
+                <div class="myscroll">
+                	<#if "2016-02-05 12:09"?date('yyyy-MM-dd HH:mm')<=.now?string("yyyy-MM-dd HH:mm")?date('yyyy-MM-dd HH:mm')>
+                    <ol class="sixs-list">
+                        <li class="firsixs">a歪中到了iPhone6s！</li>
+                    	<#if "2016-02-08 14:33"?date('yyyy-MM-dd HH:mm')<=.now?string("yyyy-MM-dd HH:mm")?date('yyyy-MM-dd HH:mm')>
+                        <li class="secsixs">白先生中了iPhone6s！</li>
+                        </#if>
+                    	<#if "2016-02-21 12:11"?date('yyyy-MM-dd HH:mm')<=.now?string("yyyy-MM-dd HH:mm")?date('yyyy-MM-dd HH:mm')>
+                        <li class="thrsixs">tynyi中了iPhone6s！</li>
+                        </#if>
+                    </ol>
+                    </#if>
+                    <ul id="scrollList">
+                    	<#list rewards as reward>
+                        <li><#if reward.wxNick?? && reward.wxNick != ""><#if (reward.wxNick?length>6)>${reward.wxNick?substring(0,2)}..${reward.wxNick?substring(reward.wxNick?length-2,reward.wxNick?length)}<#else>${reward.wxNick}</#if><#else>${reward.wxId?substring(0,3)}..${reward.wxId?substring(reward.wxId?length-3,reward.wxId?length)}</#if>获得了${reward.rewardName}</li>
+                        </#list>
+                    </ul>
+                </div>
+            </div>        
+        </div>
+    </div>
+    <input  type="hidden" id="award" value="${rewardName}" />
+</body>
+</html>

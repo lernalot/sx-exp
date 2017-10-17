@@ -1,0 +1,115 @@
+<div id="rewardcontent" onclick="closeReward(2)" style="display: none;">
+	<div class="promotion-mask"></div>
+	<div class="promotion-content">
+		<img src="/images/activity/share4.png" style="width: 100%;" />
+	</div>
+</div>
+<#assign jsmap = getWxJsSignature()> <#if jsmap.appId ??>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+	wx.config({
+	    debug: false,
+	    appId: '${jsmap.appId}',
+	    timestamp: ${jsmap.timestamp},
+	    nonceStr: '${jsmap.nonceStr}',
+	    signature: '${jsmap.signature}',
+	    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ']
+	});
+	var title = '我在玩华赢宝翻牌游戏！iPhone6s翻出来！';
+	var desc = '玩华赢宝翻牌游戏，抢iPhone6s惊喜大礼！';
+	var link = '${serverDomain!''}/game/playGame/3?wxId=${(gamePlayTimes.openid)!''}';
+	var imgUrl = '${serverDomain!''}/images/activity/wxshare64.png';
+	<#if isFinancialDay>
+	title = '华赢宝理财日100％中奖啦！24％高收益产品、iPhone6s统统拿走！';
+	desc = '24%高收益产品、iPhone6s，就在每月15日华赢宝理财日！';
+	imgUrl = '${serverDomain!''}/images/activity/wxshare15.png';
+	</#if>
+	wx.ready(function(){
+		wx.onMenuShareAppMessage({
+	      title: title,
+	      desc: desc,
+	      link: link,
+	      imgUrl: imgUrl,
+		  success : function(res) {
+			addShareCount();
+		  }
+	    });
+	    wx.onMenuShareTimeline({
+	      title: title,
+	      link: link,
+	      imgUrl: imgUrl,
+		  success : function(res) {
+			addShareCount();
+		  }
+	    });
+		wx.onMenuShareQQ({
+	      title: title,
+	      desc: desc,
+	      link: link,
+	      imgUrl: imgUrl,
+		  success : function(res) {
+			addShareCount();
+		  }
+	    });
+	});
+	wx.error(function(res){
+		//alert(JSON.stringify(res));
+	});
+</script>
+</#if>
+<script>
+	function addShareCount(){
+		<#if shareCount??&&(shareCount==0)>
+		HYB.request({
+			url : "/game/exchangePlayTimes/3/2",
+			data : "",
+			callFunc : function(data) {
+				if (data == "增加成功") {
+					HYB.addProgress({
+								content : '<p>分享成功，获得1次游戏机会！</p>'
+							});
+					var playTimes = parseInt($(".playtimes span").text());
+					$(".playtimes span").text(playTimes + 1);
+					$(".H_ShareBtn").removeClass("un-status").addClass("score-status").text("已分享");
+				}
+			}
+		});
+		</#if>
+	}
+	function showReward(deviceType){
+		deviceType = deviceType || "3"
+		if (deviceType != "3") {
+			console.log("deviceType:" + deviceType);
+			if (deviceType == "1") {
+				window.webkit.showInfoFromJs(title, desc, link, imgUrl);
+				//console.log(JSON.stringify(shareInfo))
+			} else if (deviceType == "2") {
+				window.webkit.messageHandlers.AppModel.postMessage(title, desc, link, imgUrl);
+			}
+		} else {
+		$("#rewardbtn").hide();
+		$("#rewardcontent").show();
+		$("#rewardcontent2").hide();
+		$(".promotion-mask").css("height", document.body.scrollHeight);
+		$('body,html').animate({
+				scrollTop : 0
+			}, 0);
+		}
+	}
+	function closeReward(step,needCheck){
+		if(step == 1){
+			$("#rewardcontent2").show();
+			$("#rewardbtn").hide();
+			$("#rewardcontent").hide();
+			$("#btnmask").hide();
+			$("#admask1").hide();
+			$(".promotion-mask").css("height", document.body.scrollHeight);
+		}else if(step == 2){
+			$("#rewardbtn").show();
+			$("#rewardcontent").hide();
+			$("#rewardcontent2").hide();
+			$("#btnmask").show();
+			$("#admask1").hide();
+		}
+	}
+</script>

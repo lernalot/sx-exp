@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+	<meta name="screen-orientation" content="portrait">
+    <title>猴年乐淘淘 大奖到碗里来</title>
+    <link rel="stylesheet" type="text/css" href="/templates/game/newYear/css/index.css?v=20160127">
+    <link rel="stylesheet" type="text/css" href="/templates/game/newYear/css/base.css?v=20160127">
+    
+    <script src="/js/base.js"></script>
+    <script src="/templates/game/newYear/js/zepto.min.js"></script>
+    <script src="/templates/game/newYear/js/interactive.js?v=20160127"></script>   
+    <script type="text/javascript">
+    $(function(){
+        $('.myscroll').myScroll({
+            speed: 40, //数值越大，速度越慢
+            rowHeight: 26 //li的高度
+        });
+    });
+    </script>
+
+</head>
+<body>
+<div id="container">
+	<div id="guidePanel" class="posiadap">
+        <div class="big-monkey"></div>
+        <div class="year-word">您目前有${(gamePlayTimes.playTimes)!'0'}次游戏机会！</div>
+        <ul>
+            <li class="startgame" id="getStartTime"></li>
+            <li class="gamecontrol"></li>
+            <li class="supaward"></li>
+        </ul> 
+    <div class="game-state" id="gamerule">
+        <div class="mask"></div>
+        <div class="maskBox">
+            <div class="tiphelp">
+                <div class="rule-text">
+                    <p class="firru"><span class="circle"></span><span class="titlenum">1</span>    手指滑动下方小猴接住上方落下的礼包即可，若接到炸弹游戏结束。</p>
+                    <p class="updis"><span class="circle"></span><span class="titlenum">2</span>    每人每天有1次游戏机会，机会用光后可分享到朋友圈，让朋友帮忙助力增加机会，每位好友可帮忙增加一次机会，好友帮忙的游戏机会需当日用完，次日清零。</p>
+                    <p class="updis"><span class="circle"></span><span class="titlenum">3</span>    获得的礼品请登录华赢宝账户领取。</p>
+                    <p class="updis"><span class="circle"></span><span class="titlenum">4</span>    本活动所有解释权归华赢宝所有。</p>
+                </div>
+            </div>
+        </div>
+     </div>
+      <div class="award-list">
+        <div class="mask"></div>
+        <div class="maskBox">
+            <div class="awardpic">
+                <div class="get-rule">
+                    <p class="firru"><span class="circle"></span><span class="titlenum">1</span>中奖用户需要登录华赢宝账户领取对应奖品。</p>
+                    <p class="updis"><span class="circle"></span><span class="titlenum">2</span>实物礼品将于活动结束后联系中奖用户领取。</p>
+                    <p class="updis"><span class="circle"></span><span class="titlenum">3</span>满减券、加息券领取后请在到期前使用，过期将作废。</p>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="game-state" id="stilltimes">
+        <div class="mask"></div>
+        <div class="maskBox">
+            <div class="timepic">
+                <div class="time-text">
+                    <p class="timeup">啊噢，您的游戏次数已用完，转发到朋友圈请好友点击帮忙增加1次机会（每位好友活动期间仅能助力1次哟）。</p>
+                </div>
+            </div>
+        </div>
+     </div>
+    </div>
+
+    <!-- 点击开始游戏之后三秒倒计时 -->
+
+    <div class="increase-time posiadap">
+        <div class="inc-container">
+            <div class="ruleanima"></div>
+            <div class="timenum" id="dd">4</div>
+        </div>
+    </div>
+	<div id="gamepanel">
+		<audio id="myAudio" loop="loop">
+          <source src="/templates/game/newYear/img/bgsound.mp3" type="audio/mpeg">
+        </audio>
+		<div class="score-wrap">
+            <div class="heart"></div>
+            <span id="score">0</span>
+        </div>
+		<canvas id="stage" width="320" height="568"></canvas>
+	</div>
+</div>
+
+
+
+
+<script src="/templates/game/newYear/js/index.js"></script>
+</body>
+</html>

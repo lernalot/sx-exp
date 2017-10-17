@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>理财日游戏</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+<link rel="stylesheet" type="text/css" href="/templates/game/comeback/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/templates/game/comeback/css/banking.css" />
+<link rel="stylesheet" type="text/css" href="/templates/game/comeback/css/popup.css" />
+<script src="/js/base.js"></script>
+<script type="text/javascript" src="/templates/game/comeback/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/templates/game/comeback/js/bank.js?v=20160423"></script>
+<script type="text/javascript"  src="/templates/game/comeback/js/flexible.js?v=20160423"></script>
+<script type="text/javascript">
+	var isRegister = <#if resp1001??>true<#else>false</#if>;
+    $(function(){
+        $('.myscroll').myScroll({
+            speed: 40, //数值越大，速度越慢
+            rowHeight: 30 //li的高度
+        });
+        $(document).on('click', '.ToProductList', function(){
+        	   var deviceType = $('#deviceType').val();
+               deviceType = deviceType || '3';
+               // console.log('deviceType:' + deviceType);
+               //return; 
+               if (deviceType == '1') {
+                   // andriod
+                   console.log("android toProductList: ");
+                   window.webkit.goToRegularList();
+                   return;
+               } else if (deviceType == '2') {
+                   // ios
+                   console.log("ios toProductList: ");
+                   var empty = '0';
+                   // $(".testApp").html("ios buyRegular: " + productId);
+                   window.webkit.messageHandlers.OCRegularModel.postMessage({
+                                                              body: empty
+                                                               }); 
+
+                   return;
+               }
+           window.location.href = $(this).attr('data-hyb-href');
+        });
+    });
+</script>
+
+</head>
+<body>
+
+<div class="financing-page">
+	<header class="financing-begin">
+
+	</header>
+	<div id="lottery">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<#list comebackRewards as reward>
+			<#if (reward_index==0)>
+			<tr>
+			</#if>
+			<#assign index = reward_index>
+			<#if index == 3>
+			<#assign index = 7>
+			<#elseif index == 4>
+			<#assign index = 3>
+			<#elseif index == 5>
+			<#assign index = 6>
+			<#elseif index == 6>
+			<#assign index = 5>
+			<#elseif index == 7>
+			<#assign index = 4>
+			</#if>
+				<td class="lottery-unit lottery-unit-${index}"><img class="syemasj unit-${index}" src="/templates/game/comeback/images/award${reward.rewardId}.png"></td>
+				<#if (reward_index==3)>
+				<td colspan="1" rowspan="1" class="begin-btn"><a href="javascript:;"></a></td>
+				</#if>
+			<#if (reward_index==2) || (reward_index==4)>
+			</tr>
+			<tr>
+			</#if>
+	        <#if !(reward_has_next)>
+			</tr>
+			</#if>
+			</#list>
+		</table>
+	</div>
+	<p class="playtimes">目前你还有 <span class="embed">${(gamePlayTimes.playTimes)!'0'}</span> 次机会</p>
+
+	<div class="gamebtn">
+		<a class="my-award"></a>
+		<a class="game-method"></a>
+	</div>
+	<div class="name-list">
+		<div class="myscroll">
+            <ul id="scrollList">
+            	<#list comebackRecords as record>
+                <li>
+                	<#if record.wxNick?? && record.wxNick != ""><#if (record.wxNick?length>6)>${record.wxNick?substring(0,3)}..${record.wxNick?substring(record.wxNick?length-3,record.wxNick?length)}<#else>${record.wxNick}</#if><#else>${record.wxId?substring(0,3)}..${record.wxId?substring(record.wxId?length-3,record.wxId?length)}</#if>
+                	<span class="rewardname">${record.rewardName}</span><span class="record-time">${record.time}</span>
+                </li>
+                </#list>
+            </ul>
+        </div>
+	</div>
+	<div class="rule-base">
+		<ul>
+      <li>1.  点击上方按钮即可开始玩游戏，若游戏次数用光可查看更多攻略。</li>
+      <li>2.  获得奖品需登录华赢宝账户才可领取。</li>
+      <li>3.  请尽快使用游戏次数，每月月底游戏次数会清零。</li>
+      <li>4.  每月15日为华赢宝理财日，当日每个账户自动赠送3次游戏机会，中奖概率100%，奖品更诱人。</li>
+      <li>5.  游戏获得的劵类奖品请留意使用期限，过期作废。</li>
+      <#if deviceType ?? && deviceType == "2" ><li>6.  本活动与苹果公司无关。</li></#if>
+    </ul>
+	</div>
+  <div class="explain">本活动规则解释权归华赢宝理财所有<br />如有疑问请联系在线客服或拨打4001190717</div>
+	<div class="game-state" id="stilltimes">
+        <div class="mask"></div>
+        <span class="day-close"></span>
+        <div class="maskBox">
+            <div class="timepic">
+                <div class="time-text">
+                	<p class="pity">很遗憾！</p>
+                    <p class="tryagain">一定是你抽奖的姿势不对，再试一试？</p>
+                    <a class="play-again">再玩一次</a>
+                </div>
+            </div>
+        </div>
+     </div>
+
+     <div class="raiders">
+        <div class="mask"></div>
+        <span class="day-close" id="rideclose"></span>
+        <div class="raidBox">
+            <div class="raiderpic">
+                <div class="raid-text">
+                    <#if resp1001??><#else><div class="login"><p class="plusone">|  注册+1</p><p class="howplus">新用户注册成功获得1次游戏机会。</p><a class="un-status four" href="/index">去完成</a></div></#if>
+                    <#if resp1001?? && resp1001.idCard ?? && resp1001.idCard != ""><#else><div class="bankCark"><p class="plusone">|  绑卡+1</p><p class="howplus">新用户完成银行卡绑定可获得1次游戏机会。</p><a class="un-status" href="/verified/bindBankCard?fromAction=index">去完成</a></div></#if>
+                    <div><p class="plusone">|  积分+1</p><p class="howplus">每日可花200积分获得1次游戏机会，每日限1次。</p><#if exchangeCount??&&(exchangeCount>0)><a class="score-status">已兑换</a><#else><a class="un-status third H_ExchagePlayTimes" href="javascript:void(0);">兑换</a></#if></div>
+                    <div><p class="plusone">|  投资+1</p><p class="howplus">每日首次投资定期产品可获得1次游戏机会。</p><#if investCount??&&(investCount>0)><a class="score-status">已完成</a><#else><a class="un-status four ToProductList" href="javascript:void(0);" data-hyb-href="/verified/productRegular">去完成</a></#if></div>
+                    <div><p class="plusone">|  邀请+1</p><p class="howplus">邀请好友注册投资成功可获1次游戏机会（投资需1000元）。</p><a class="un-status five" href="/index/invitAnnounc">去完成</a></div>
+               <#if !(deviceType?? && (deviceType == "1" || deviceType == "2"))>
+                    <div><p class="plusone">|  分享+1</p><p class="howplus">分享成功可获1次游戏机会。</p><#if shareCount??&&(shareCount>0)><a class="score-status">已分享</a><#else><a class="un-status six H_ShareBtn" deviceType=${deviceType!'no'} >去分享</a></#if></div>
+               </#if>
+                </div>
+            </div>
+        </div>
+     </div>
+
+
+     <div class="award-list">
+        <div class="mask"></div>
+        <span class="day-close"></span>
+        <div class="awardBox">
+            <div class="awardpic">
+            	<ol class="award-detail" id="award_ol">
+            		<#list myComebackRecords as record>
+            		<li class="name-time">${record.rewardName}<span>${record.obtainTime?string("yyyy-MM-dd")}获得</span></li>
+            		</#list>
+            	</ol>
+            	<#if !resp1001??>
+            	<a href="/index" class="receive">一键领取</a>
+            	</#if>
+            </div>
+        </div>
+     </div>
+     <script type="text/javascript">
+        var Lilength=document.getElementById("award_ol").getElementsByTagName("li").length;
+           if (Lilength>9)
+           {
+              award_ol.className="award-detail award-detail2";
+           }
+</script>
+     <div class="winning">
+        <div class="mask"></div>
+        <span class="day-close"></span>
+        <div class="maskBox">
+            <div class="winningpic">
+                <div class="awar-name">20元京东卡</div>
+                <div class="winning-text">
+                	<p class="winningyou">恭喜你</p>
+                    <p class="getted">得到了XXX</p>
+                    <div class="winbtn jdtive">
+                    	<a class="click-get"><#if resp1001??>点击查看<#else>点击领取</#if></a>
+                    	<a class="play-wining jdtive">再玩一次</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+<#include "wxshare.html">
+<div style="display:none">
+<input type="hidden" id="deviceType" value="${deviceType!'3'}"/>
+	<script src="https://s4.cnzz.com/z_stat.php?id=1260107055&web_id=1260107055" language="JavaScript"></script>
+</div>
+</body>
+</html>
